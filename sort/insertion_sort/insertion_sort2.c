@@ -23,7 +23,10 @@ void insertion_sort(int *a, int n)
         a[j+1] = temp;
         /*/
         for(j=i; j>0 && a[j-1]>temp; j--);
-        memmove(a+j+1, a+j, (i-j)*sizeof(a[0]));
+        if(j<i) //remove useless memmove (optional)
+        {
+            memmove(a+j+1, a+j, (i-j)*sizeof(a[0]));
+        }
         a[j] = temp;
         //print(a,n);
     }
